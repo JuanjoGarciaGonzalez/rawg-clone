@@ -1,0 +1,316 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: white;
+  font-family: -apple-system, -apple-system, 
+  BlinkMacSystemFont, 'Segoe UI', Roboto,  
+  Oxygen, Ubuntu, Cantarell, 'Open Sans', 
+  'Helvetica Neue', sans-serif;
+}
+
+:root {
+  --bg-main: #151515;
+}
+
+body {
+  background-color: var(--bg-main);
+}
+
+main {
+  padding: 0 100px;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.logo {
+  flex-grow: 1;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 5px;
+}
+
+.search-bar {
+  flex-grow: 10;
+  border-radius: 50px;
+  background-color: hsla(0,0%,100%,.16);
+  padding: 0 1rem 0 2.5rem;
+  transition: background-color .3s ease;
+  position: relative;
+}
+
+.search-bar-lens {
+  position: absolute;
+  left: 15px;
+  top: 3px;
+  bottom: 0;
+  margin: auto;
+  width: 1rem;
+  fill: hsla(0,0%,100%,.6);
+}
+
+.search-bar.focused, .search-bar:hover  {
+  background-color: hsla(0,0%,100%,.30);
+}
+
+.search-bar input {
+  all: unset;
+  color: hsla(0,0%,100%,.6);
+  padding: .7rem 0;
+  width: 100%;
+}
+
+.search-bar input::placeholder {
+  color: hsla(0,0%,100%,.6);
+}
+
+.api-link {
+  flex-grow: 1;
+  text-align: right;
+  font-weight: 500;
+  padding-bottom: 5px;
+  transition: color .3s ease;
+}
+
+.api-link:hover {
+  color: hsla(0,0%,100%,.6);
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* PAGE SIDEBAR */
+.sidebar {
+  width: 15%;
+  display: inline-block;
+  padding-top: 2rem;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+}
+
+.sidebar-menu a {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 700;
+  transition: color .3s ease;
+}
+
+.sidebar-menu a:hover {
+  color: hsla(0,0%,100%,.6);
+}
+
+/* PAGE CONTENT */
+.content {
+  width: 85%;
+  display: inline-block;
+}
+
+.page-title {
+    font-size: 72px;
+    line-height: 74px;
+    font-weight: 700;
+    margin-bottom: .6rem;
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.game-card {
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #202020;
+  transition: all .4s ease;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+}
+
+.game-card-image {
+  height: 200px;
+}
+
+.game-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-card-content {
+  padding: 1rem;
+}
+
+.game-card-content h3 {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+}
+
+.game-card-content .rating {
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: hsla(0,0%,100%,.1);
+  padding: 5px 10px;
+  display: inline-flex;
+  justify-content: space-between;
+  gap: 3px;
+  align-items: center;
+}
+
+.game-card-content .rating img {
+  width: 15px;
+  fill: white;
+}
+
+.game-card-platform {
+  width: 17px;
+  height: 13px;
+  margin-right: 5px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: initial;
+  display: inline-block;
+}
+
+.game-card-platform.pc {
+  background-image: url('../public/pc.svg');
+}
+
+.game-card-platform.xbox {
+  background-image: url('../public/xbox.svg');
+}
+
+.game-card-platform.play {
+  background-image: url('../public/play.svg');
+}
+
+.game-card-platform.linux {
+  background-image: url('../public/linux.svg');
+}
+
+.game-card-platform.nintendo {
+  background-image: url('../public/nintendo.svg');
+}
+
+.game-card-platform.mac {
+  background-image: url('../public/mac.svg');
+}
+
+.game-card-platform.android {
+  background-image: url('../public/android.svg');
+}
+
+.game-card-platform.ios {
+  background-image: url('../public/ios.svg');
+}
+
+/* FILTERS */
+.filters select {
+  background-color: hsla(0,0%,100%,.07);
+  padding: 10px 1rem;
+  margin-right: 1rem;
+  margin-top: 2rem;
+  border: none;
+  border-radius: 8px;
+}
+
+.filters option {
+  background-color: hsla(0,0%,100%,.07);
+  padding: 10px 1rem;
+  border: none;
+  color: black;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  font-weight: 500;
+}
+
+.footer a {
+  text-decoration: underline;
+  transition: color .3s ease;
+}
+
+.footer a:hover {
+  color: hsla(0,0%,100%,.6);
+}
+
+@media(max-width: 1224px) {
+  main {
+    padding: 0 2rem;
+  }
+}
+
+@media(max-width: 768px) {
+  main {
+    padding: 0 1rem;
+  }
+  .api-link {
+    display: none;
+  }
+
+  .header {
+    gap: 1rem;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .content, .sidebar {
+    width: 100%;
+    padding-top: 0;
+  }
+}
+
+
+/* SPINNER */
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
