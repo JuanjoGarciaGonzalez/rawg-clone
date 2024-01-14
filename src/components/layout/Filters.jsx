@@ -2,7 +2,11 @@ import React from 'react'
 import { FilterGenre } from './FilterGenre'
 import { FilterPlatform } from './FilterPlatform'
 
-export const Filters = () => {
+export const Filters = ({ onFilterChange }) => {
+
+  const handleGenreChange = (genre) => {
+    onFilterChange(genre);
+};
 
   return (
     <section className='filters'>
@@ -16,7 +20,7 @@ export const Filters = () => {
             <option value="rating">Average rating</option>
         </select>
 
-        <FilterGenre />
+        <FilterGenre onFilterChange={onFilterChange} />
         <FilterPlatform />
 
 

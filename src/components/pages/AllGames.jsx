@@ -1,10 +1,41 @@
 import React from 'react'
 import { useFetch } from './../../useFetch'
 import { Filters } from './../layout/Filters'
+import { GameCard } from '../games/GameCard'
+import { useState, useEffect } from 'react'
 
 export const AllGames = () => {
     const apiKey = 'de35ab7d39f2441aad3a92606e464186'
     const {data, loading, error} = useFetch(`https://rawg.io/api/games?token&key=${apiKey}&page_size=40`)
+
+    const [filteredGames, setFilteredGames] = useState(data);
+    const [isFiltering, setIsFiltering] = useState(false);
+    
+    
+    useEffect(() => {
+        if (data && data.results) {
+            setFilteredGames(data);
+        }
+    }, [data]);
+    
+
+
+    const handleFilter = async (genre) => {
+        document.querySelector('.game-list').style.display = 'none'
+        setIsFiltering(true)
+        let urlFiltered = ''
+        if (genre == 'all') {
+            urlFiltered = `https://rawg.io/api/games?token&key=${apiKey}&page_size=40`
+        }else {
+            urlFiltered = `https://rawg.io/api/games?token&key=${apiKey}&page_size=40&genres=${genre}`
+        }
+
+        const response = await fetch(urlFiltered);
+        const filteredData = await response.json();
+        document.querySelector('.game-list').style.display = 'grid'
+        setFilteredGames(filteredData);
+        setIsFiltering(false);
+    };
 
 
   return (
@@ -12,27 +43,13 @@ export const AllGames = () => {
         <h2 className='page-title'>All Games</h2>
         <p>Explore all available games</p>
 
-        <Filters />
+        <Filters onFilterChange={handleFilter}/>
 
-        <article className='game-list'>
         {error && <p>Error: {error}</p>}
-        {loading && <div className='lds-dual-ring'></div>}
-        {data?.results.map((game) => (
-            <div className='game-card' key={game.id}>
-                <a href={game.slug}>
-                    <div className='game-card-image'>
-                        {game.background_image != null ? <img src={game.background_image} alt={game.name}/> : ''}
-                    </div>
-                    <div className='game-card-content'>
-                        {game.parent_platforms != null ? game.parent_platforms.map((platform) => (
-                            <span className={`game-card-platform ${platform.platform.slug == 'pc' ? 'pc' : ''} ${platform.platform.slug == 'playstation' ? 'play' : ''} ${platform.platform.slug == 'xbox' ? 'xbox' : ''} ${platform.platform.slug == 'mac' ? 'mac' : ''} ${platform.platform.slug == 'nintendo' ? 'nintendo' : ''} ${platform.platform.slug == 'android' ? 'android' : ''} ${platform.platform.slug == 'ios' ? 'ios' : ''} ${platform.platform.slug == 'linux' ? 'linux' : ''}`} key={platform.platform.id}></span>
-                        )) : ''}
-                        <h3>{game.name}</h3>
-                        <span className='rating'><img src='./../../../public/star.svg' alt='star'/> {game.rating}</span>
-                    </div>
-                    
-                </a>
-            </div>
+        {loading || isFiltering ? <div className='lds-dual-ring'></div> : ''}
+        <article className='game-list'>
+        {filteredGames?.results.map((game) => (
+            <GameCard data={game} key={game.id}/>
         ))}
             
         </article>

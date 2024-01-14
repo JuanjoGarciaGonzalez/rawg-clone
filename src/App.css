@@ -130,7 +130,7 @@ main {
 
 .game-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -159,6 +159,7 @@ main {
 
 .game-card-content {
   padding: 1rem;
+  position: relative;
 }
 
 .game-card-content h3 {
@@ -176,12 +177,12 @@ main {
   padding: 5px 10px;
   display: inline-flex;
   justify-content: space-between;
-  gap: 3px;
+  gap: 5px;
   align-items: center;
 }
 
 .game-card-content .rating img {
-  width: 15px;
+  width: 12px;
   fill: white;
 }
 
@@ -227,6 +228,27 @@ main {
   background-image: url('../public/ios.svg');
 }
 
+.metacritic {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 2px 0;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid;
+  min-width: 32px;
+}
+
+.metacritic.green {
+  color: #6dc849;
+  border-color: rgba(109,200,73,.4);
+}
+
+.metacritic.red {
+  border-color: red;
+  color: red;
+}
 /* FILTERS */
 .filters select {
   background-color: hsla(0,0%,100%,.07);
@@ -258,6 +280,89 @@ main {
 
 .footer a:hover {
   color: hsla(0,0%,100%,.6);
+}
+
+.platform-menu-item .game-card-platform, .platform-menu-item .platform-menu__link {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.platform-menu-item .game-card-platform {
+  border-radius: 6px;
+  background-color: hsla(0,0%,100%,.1);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-size: 60% 60%;
+  background-position: center;
+}
+
+.platform-menu__link {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.platform-menu-item .game-card-platform {
+  transition: all .3s ease;
+}
+
+.platform-menu-item:hover .game-card-platform {
+  background-color: hsla(0, 0%, 100%, 0.4);
+}
+
+/* SEARCH PAGE */
+.search-results {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid hsla(0,0%,100%,.2);
+}
+
+.search-results span {
+  color: hsla(0,0%,100%,.3);
+  font-size: 18px;
+}
+
+.search-result-term {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.search-result-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: flex-end
+}
+
+.skip-search {
+  all: unset;
+  background-image: url('../public/skip-search.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40% 40%;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: hsla(0,0%,100%,.1);
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.skip-search:hover {
+  opacity: .8;
+}
+
+.lds-dual-ring {
+  margin: 1rem 0;
 }
 
 @media(max-width: 1224px) {

@@ -18,6 +18,13 @@ export const Header = () => {
         searchBarInput.addEventListener('focusout', () => {
             searchBar.classList.remove('focused')
         })
+
+        searchBarInput.addEventListener("keyup", ({key}) => {
+            if (key === "Enter") {
+                const searchInputValue = searchBarInput.value
+                window.location.href = '/search/' + searchInputValue
+            }
+        })
     })
 
   return (

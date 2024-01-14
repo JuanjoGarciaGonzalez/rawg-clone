@@ -1,4 +1,5 @@
 import React from 'react'
+import { MenuPlatforms } from './MenuPlatforms'
 
 export const Sidebar = () => {
   return (
@@ -12,6 +13,8 @@ export const Sidebar = () => {
                     <a href='/all'>All Games</a>
                 </li>
             </ul>
+
+            <MenuPlatforms />
         </nav>
     </aside>
   )
