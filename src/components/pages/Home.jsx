@@ -5,8 +5,7 @@ import { GameCard } from '../games/GameCard'
 import { useState } from 'react'
 
 export const Home = () => {
-    const apiKey = 'de35ab7d39f2441aad3a92606e464186'
-    let { data, loading, error} = useFetch(`https://rawg.io/api/games?token&key=${apiKey}&metacritic=85,100&ordering=-released&page_size=40`)
+    let { data, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}&metacritic=85,100&ordering=-released&page_size=40`)
     const [filteredGames, setFilteredGames] = useState(data);
     const [isFiltering, setIsFiltering] = useState(false);
     
@@ -24,9 +23,9 @@ export const Home = () => {
         setIsFiltering(true)
         let urlFiltered = ''
         if (genre == 'all') {
-            urlFiltered = `https://rawg.io/api/games?token&key=${apiKey}&metacritic=85,100&ordering=-released&page_size=40`
+            urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&metacritic=85,100&ordering=-released&page_size=40`
         }else {
-            urlFiltered = `https://rawg.io/api/games?token&key=${apiKey}&metacritic=85,100&ordering=-released&page_size=40&genres=${genre}`
+            urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&metacritic=85,100&ordering=-released&page_size=40&genres=${genre}`
         }
 
         const response = await fetch(urlFiltered);

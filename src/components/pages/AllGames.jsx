@@ -5,8 +5,7 @@ import { GameCard } from '../games/GameCard'
 import { useState, useEffect } from 'react'
 
 export const AllGames = () => {
-    const apiKey = 'de35ab7d39f2441aad3a92606e464186'
-    const {data, loading, error} = useFetch(`https://rawg.io/api/games?token&key=${apiKey}&page_size=40`)
+    const {data, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}&page_size=40`)
 
     const [filteredGames, setFilteredGames] = useState(data);
     const [isFiltering, setIsFiltering] = useState(false);
@@ -20,14 +19,21 @@ export const AllGames = () => {
     
 
 
-    const handleFilter = async (genre) => {
+    const handleFilter = async (genre, platform, order) => {
+        console.log(genre, platform)
         document.querySelector('.game-list').style.display = 'none'
         setIsFiltering(true)
-        let urlFiltered = ''
-        if (genre == 'all') {
-            urlFiltered = `https://rawg.io/api/games?token&key=${apiKey}&page_size=40`
-        }else {
-            urlFiltered = `https://rawg.io/api/games?token&key=${apiKey}&page_size=40&genres=${genre}`
+        let urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&page_size=40`
+        if (genre != 'all') {
+            urlFiltered += `&genres=${genre}`
+        }
+
+        if (platform != 'all') {
+            urlFiltered += `&platforms=${platform}`
+        }
+
+        if (order != 'all') {
+            urlFiltered += `&ordering=${order}`
         }
 
         const response = await fetch(urlFiltered);
