@@ -18,14 +18,23 @@ export const Home = () => {
     
 
 
-    const handleFilter = async (genre) => {
+    const handleFilter = async (genre, platform, order) => {
+        console.log(genre, platform, order)
         document.querySelector('.game-list').style.display = 'none'
         setIsFiltering(true)
-        let urlFiltered = ''
-        if (genre == 'all') {
-            urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&metacritic=85,100&ordering=-released&page_size=40`
+        let urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&page_size=40&metacritic=85,100`
+        if (genre != 'all') {
+            urlFiltered += `&genres=${genre}`
+        }
+
+        if (platform != 'all') {
+            urlFiltered += `&parent_platforms=${platform}`
+        }
+
+        if (order != 'all') {
+            urlFiltered += `&ordering=${order}`
         }else {
-            urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&metacritic=85,100&ordering=-released&page_size=40&genres=${genre}`
+            urlFiltered += `&ordering=-released`
         }
 
         const response = await fetch(urlFiltered);

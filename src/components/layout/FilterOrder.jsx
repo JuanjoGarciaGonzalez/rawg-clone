@@ -12,7 +12,7 @@ export const FilterOrder = ({ onFilterChange }) => {
 
   return (
     <select name="order" id="order" className='order' onChange={filterPerGenre}>
-        <option value="all">Select option</option>
+        <option value="all">Order by:</option>
         <option value="-relevance">Relevance</option>
         <option value="-added">Date added</option>
         <option value="-name">Name</option>

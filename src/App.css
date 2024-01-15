@@ -137,10 +137,10 @@ main {
 }
 
 .game-card {
-  overflow: hidden;
   border-radius: 12px;
   background-color: #202020;
   transition: all .4s ease;
+  position: relative;
 }
 
 .game-card:hover {
@@ -149,6 +149,9 @@ main {
 
 .game-card-image {
   height: 200px;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+  overflow: hidden;
 }
 
 .game-card-image img {
@@ -179,6 +182,7 @@ main {
   justify-content: space-between;
   gap: 5px;
   align-items: center;
+  margin-top: 5px;
 }
 
 .game-card-content .rating img {
@@ -249,6 +253,60 @@ main {
   border-color: red;
   color: red;
 }
+
+.game-card-content-hidden {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: all .1s ease;
+  opacity: 0;
+  z-index: 10;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: #202020;
+  padding: 0 1rem 1rem 1rem;
+}
+
+.game-card:hover .game-card-content-hidden {
+  opacity: 1;
+}
+
+.game-card-content-hidden > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid hsla(0,0%,100%,.04);
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.game-card-content-hidden h4 {
+  font-size: 12px;
+  color: hsla(0, 0%, 100%, 0.4);
+  font-weight: 400;
+}
+
+.game-card-content-hidden span {
+  font-size: 12px;
+}
+
+.game-card-content-hidden a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  background-color: hsla(0,0%,100%,.04);
+  padding: 10px 16px 10px 10px;
+  margin-top: 1rem;
+}
+
+.game-card-content-hidden a img{
+  width: 14px;
+  transform: rotateZ(-90deg);
+  opacity: .6;
+}
 /* FILTERS */
 .filters select {
   background-color: hsla(0,0%,100%,.07);
@@ -257,6 +315,19 @@ main {
   margin-top: 2rem;
   border: none;
   border-radius: 8px;
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('./../public/arrow.svg');
+  background-repeat: no-repeat;
+  background-size: 10px;
+  background-position: 175px center;
+  width: 200px;
+}
+
+.filters select {
+
 }
 
 .filters option {
@@ -265,6 +336,7 @@ main {
   border: none;
   color: black;
 }
+
 
 /* FOOTER */
 .footer {
