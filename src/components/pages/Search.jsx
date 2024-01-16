@@ -4,15 +4,13 @@ import {
     useParams,
   } from "react-router-dom";
   import { useFetch } from '../../useFetch';
-  import { Filters } from '../layout/Filters';
   import { GameCard } from '../games/GameCard';
 
 
 export const Search = () => {
 
     const { term } = useParams();
-    const apiKey = 'de35ab7d39f2441aad3a92606e464186'
-    const {data, loading, error} = useFetch(`https://rawg.io/api/games?token&key=${apiKey}&search=${term}&search_precise=boolean&page_size=40`)
+    const {data, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}&search=${term}&search_precise=true&page_size=40`)
 
     const redirectHome = () => {
         window.location.href = '/';

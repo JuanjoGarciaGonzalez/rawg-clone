@@ -17,6 +17,7 @@ export const GameCard = (props) => {
 
             <div className='game-card-content-hidden'>
                 <div>
+                
                     <h4>Released</h4>
                     <span>{props.data.released}</span>
                 </div>

@@ -20,7 +20,7 @@ export const AllGames = () => {
 
 
     const handleFilter = async (genre, platform, order) => {
-        console.log(genre, platform, order)
+
         document.querySelector('.game-list').style.display = 'none'
         setIsFiltering(true)
         let urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&page_size=40`

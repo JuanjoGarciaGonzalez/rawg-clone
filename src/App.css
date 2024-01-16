@@ -22,6 +22,13 @@ main {
   padding: 0 100px;
 }
 
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
 /* HEADER */
 .header {
   display: flex;
@@ -130,7 +137,7 @@ main {
 
 .game-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -145,6 +152,7 @@ main {
 
 .game-card:hover {
   transform: scale(1.05);
+  z-index: 10;
 }
 
 .game-card-image {
@@ -171,6 +179,14 @@ main {
   font-weight: 700;
   margin-bottom: .5rem;
   margin-top: .5rem;
+}
+
+.game-card-content h3 a {
+  transition: color .3s ease;
+}
+
+.game-card-content h3 a:hover {
+  color: hsla(0,0%,100%,.6);
 }
 
 .game-card-content .rating {
@@ -262,7 +278,6 @@ main {
   margin: auto;
   transition: all .1s ease;
   opacity: 0;
-  z-index: 10;
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
   background-color: #202020;
@@ -300,10 +315,11 @@ main {
   background-color: hsla(0,0%,100%,.04);
   padding: 10px 16px 10px 10px;
   margin-top: 1rem;
+  font-size: 13px;
 }
 
 .game-card-content-hidden a img{
-  width: 14px;
+  width: 12px;
   transform: rotateZ(-90deg);
   opacity: .6;
 }
@@ -324,10 +340,6 @@ main {
   background-size: 10px;
   background-position: 175px center;
   width: 200px;
-}
-
-.filters select {
-
 }
 
 .filters option {
@@ -435,6 +447,32 @@ main {
 
 .lds-dual-ring {
   margin: 1rem 0;
+}
+
+/* GAME PAGE */
+.content.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start
+}
+
+.content.padding {
+  padding: 0 8%;
+}
+
+.game-page-content {
+  flex-basis: 60%;
+}
+
+.game-page-media {
+  flex-basis: 40%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
+}
+
+.game-page-media-img {
+  width: 100%;
+
 }
 
 @media(max-width: 1224px) {
