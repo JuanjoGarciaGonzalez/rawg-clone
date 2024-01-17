@@ -20,6 +20,7 @@ body {
 
 main {
   padding: 0 100px;
+  min-height: 100vh;
 }
 
 p {
@@ -355,6 +356,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   padding: 2rem 0;
   font-weight: 500;
+  margin-top: 50px;
 }
 
 .footer a {
@@ -453,7 +455,8 @@ h1, h2, h3, h4, h5, h6 {
 .content.flex {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start
+  align-items: flex-start;
+  gap: 3rem;
 }
 
 .content.padding {
@@ -466,18 +469,194 @@ h1, h2, h3, h4, h5, h6 {
 
 .game-page-media {
   flex-basis: 40%;
+  overflow: hidden;
+  padding-top: 50px;
+}
+
+.game-page-media-gallery {
+  overflow: hidden;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
+  grid-template-columns: repeat(2, minmax(150px, 200px));
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 1rem;
+}
+
+.game-page-media-gallery .game-page-gallery:first-of-type{
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+}
+
+.game-page-gallery {
+  overflow: hidden;
 }
 
 .game-page-media-img {
   width: 100%;
+  object-fit: cover;
+  transition: all .3s ease;
+  border-radius: 7px;
+}
 
+.game-page-gallery:hover img {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.game-header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+
+.game-header .game-card-platform{
+  width: 20px;
+  height: 20px;
+  margin-top: 4px
+}
+
+.game-page-date {
+  font-size: 12px;
+  line-height: normal;
+  font-weight: 400;
+  padding: 2px 7.5px;
+  color: #000;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.add-game {
+  background-color: white;
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  display: inline-table;
+  padding: 10px 3rem 10px 1rem;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 2rem 0;
+  transition: all .3s ease;
+  background-image: url('./../public/add-button.svg');
+  background-repeat: no-repeat;
+  background-position: 105% center;
+  background-size: 35px;
+}
+
+.add-game span {
+  font-size: 18px;
+  letter-spacing: 0;
+  color: black;
+  padding: 5px 5px 0 0;
+}
+
+.add-game:hover {
+  background-color: rgba(255, 255, 255, 0.699);
+}
+
+.game-page-about {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.game-page-desc {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.game-page-platforms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-page-stores {
+  margin-top: 2rem;
+}
+
+.game-page-stores h4{
+  color: hsla(0,0%,100%,.5);
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.game-page-store {
+  display: flex;
+  align-items: center;
+  color: hsla(0,0%,100%,.5);
+  border-radius: 6px;
+  background-color: hsla(0,0%,100%,.1);
+  transition: all .3s ease;
+  margin-top: 1rem;
+  padding: 10px 1rem;
+}
+
+.game-page-store:hover {
+  background-color: white;
+  color: black;
+}
+
+.game-page-stores-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: start;
+  align-items: center;
+
+}
+
+.game-page-table {
+  margin-top: 2rem;
+}
+
+.game-page-table th{
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: hsla(0,0%,100%,.2);
+  text-align: left;
+}
+
+.game-page-table td p{
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.game-page-table a{
+  text-decoration: underline;
+}
+
+.game-page-table th {
+  width: 50%;
+}
+
+.game-page-table td{
+  width: 50%;
+  text-align: left;
+  vertical-align: top;
+  padding-right: 10px;
+}
+
+.game-page-table tr{
+  padding-bottom: 2rem;
+}
+
+.empty-row {
+  height: 1rem;
 }
 
 @media(max-width: 1224px) {
   main {
     padding: 0 2rem;
+  }
+
+  .content.flex {
+    flex-direction: column;
+  }
+
+  .content.padding {
+    padding: 0;
+
   }
 }
 

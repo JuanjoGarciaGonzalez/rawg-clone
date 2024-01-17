@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
-import { useState } from 'react';
+import { useState } from 'react'
+import 'photoswipe/dist/photoswipe.css'
+import { Gallery, Item } from 'react-photoswipe-gallery'
 
 export const GamePageGallery = (props) => {
 
@@ -20,10 +22,24 @@ export const GamePageGallery = (props) => {
     
 
     return (
-        <div>
+        <Gallery>
            {screenshots != null ? screenshots?.map((screenshot) => (
-                <img key={screenshot.id} src={screenshot.image} alt={screenshot.id} className='game-page-media-img'/>
+            <div className='game-page-gallery' key={screenshot.id}>
+                <Item
+                original={screenshot.image}
+                thumbnail={screenshot.image}
+                width={screenshot.width}
+                height={screenshot.height}
+                id={screenshot.id}
+                cropped
+                >
+                {({ ref, open }) => (
+                    <img ref={ref} onClick={open} src={screenshot.image} className='game-page-media-img'/>
+                )}
+                </Item>
+            </div>
+                
            )) : ''}
-        </div>
+        </Gallery>
     )
 }

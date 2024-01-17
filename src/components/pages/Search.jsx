@@ -5,12 +5,18 @@ import {
   } from "react-router-dom";
   import { useFetch } from '../../useFetch';
   import { GameCard } from '../games/GameCard';
+  import { useEffect } from 'react';
 
 
 export const Search = () => {
 
     const { term } = useParams();
     const {data, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}&search=${term}&search_precise=true&page_size=40`)
+
+    useEffect(() => {
+        const input = document.querySelector('input')
+        input.value = term
+      })
 
     const redirectHome = () => {
         window.location.href = '/';
