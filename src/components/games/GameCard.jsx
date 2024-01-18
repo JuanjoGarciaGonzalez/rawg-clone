@@ -5,7 +5,7 @@ export const GameCard = (props) => {
   return (
     <div className='game-card' key={props.data.id}>
         <div className='game-card-image'>
-            {props.data.background_image != null ? <img src={props.data.background_image} alt={props.data.name} loading="lazy"/> : ''}
+            {props.data.background_image != null ? <img src={props.data.background_image} alt={props.data.name} /> : ''}
         </div>
         <div className='game-card-content'>
             {props.data.parent_platforms != null ? props.data.parent_platforms.map((platform) => (

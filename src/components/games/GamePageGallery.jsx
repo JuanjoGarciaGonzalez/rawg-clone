@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import 'photoswipe/dist/photoswipe.css'
 import { Gallery, Item } from 'react-photoswipe-gallery'
+import Placeholder from './../../Placeholder'
 
 export const GamePageGallery = (props) => {
 
@@ -39,7 +40,7 @@ export const GamePageGallery = (props) => {
                 </Item>
             </div>
                 
-           )) : ''}
+           )) : <Placeholder/>}
         </Gallery>
     )
 }
