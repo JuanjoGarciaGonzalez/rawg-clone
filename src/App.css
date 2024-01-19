@@ -192,7 +192,7 @@ h1, h2, h3, h4, h5, h6 {
 .game-card {
   border-radius: 12px;
   background-color: #202020;
-  transition: all .4s ease;
+  transition: transform .4s ease;
   position: relative;
 }
 
@@ -693,6 +693,10 @@ h1, h2, h3, h4, h5, h6 {
   height: 1rem;
 }
 
+.buttonHam, .offcanvas {
+  display: none;
+}
+
 @media(max-width: 1540px) {
   main {
     padding: 0 3rem;
@@ -704,6 +708,62 @@ h1, h2, h3, h4, h5, h6 {
 
   .sidebar {
     display: none;
+  }
+
+  .buttonHam {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 2rem;
+  }
+
+  .api-link {
+    display: none;
+  }
+
+  .offcanvas {
+    display: block;
+    height: 100vh;
+    width: 30vw;
+    position: fixed;
+    left: 110%;
+    top: 0;
+    backdrop-filter: blur(65px);
+    transition: all .3s ease;
+    padding: 4rem 2rem;
+  }
+
+  .offcanvas .sidebar {
+    display: block;
+    width: 100%;
+  }
+
+  .offcanvas.opened {
+    left: 70%;
+    
+  }
+
+  .offcanvas-close {
+    all: unset;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 2;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    background-image: url(./../public/close.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+  }
+
+  .offcanvas-close svg{
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -726,9 +786,6 @@ h1, h2, h3, h4, h5, h6 {
   main {
     padding: 0 1rem;
   }
-  .api-link {
-    display: none;
-  }
 
   .header {
     gap: 1rem;
@@ -741,6 +798,19 @@ h1, h2, h3, h4, h5, h6 {
   .content, .sidebar {
     width: 100%;
     padding-top: 0;
+  }
+
+  .offcanvas.opened {
+    width: 100%;
+    left: 0;
+  }
+
+  .offcanvas-close {
+    right: .5rem;
+  }
+
+  .buttonHam {
+    margin-left: 0;
   }
 }
 

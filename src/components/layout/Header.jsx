@@ -23,6 +23,11 @@ export const Header = () => {
         })
     })
 
+    const openOffcanvas = () => {
+        const sidebar = document.querySelector('.offcanvas')
+        sidebar.classList.add('opened')
+    }
+
   return (
     <header className='header'>
         <h1 className='logo'><a href='/'>RAWG</a></h1>
@@ -30,7 +35,10 @@ export const Header = () => {
             <svg className='search-bar-lens' alt="Search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"></path></svg>
             <input type='text' placeholder='Search games...'/>
         </div>
-        <a href='https://api.rawg.io/docs/' target='_blamk' className='api-link'>API DOCS</a>
+        <a href='https://api.rawg.io/docs/' target='_blank' className='api-link'>API DOCS</a>
+        <button className='buttonHam' onClick={openOffcanvas}>
+            <svg className="SVGInline-svg header-menu__icon-svg" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.8h16M1 9h16M1 16.2h16" strokeWidth="2" stroke="#FFF" fill="none" strokeLinecap="round"></path></svg>
+        </button>
     </header>
   )
 }

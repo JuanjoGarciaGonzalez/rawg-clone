@@ -2,63 +2,92 @@ import React, { useEffect } from 'react'
 import { useFetch } from '../../useFetch'
 import { Filters } from '../layout/Filters'
 import { GameCard } from '../games/GameCard'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 export const Home = () => {
-    let { data, loading, error} = useFetch(`${import.meta.env.VITE_API_BASE_URL}&metacritic=85,100&ordering=-released&page_size=40`)
-    const [filteredGames, setFilteredGames] = useState(data);
-    const [isFiltering, setIsFiltering] = useState(false);
-    
-    
-    useEffect(() => {
-        if (data && data.results) {
-            setFilteredGames(data);
-        }
-    }, [data]);
-    
+   
+    const [filteredGames, setFilteredGames] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [error, setError] = useState(null)
+    const [nextPage, setNextPage] = useState(false)
 
-
-    const handleFilter = async (genre, platform, order) => {
-
-        document.querySelector('.game-list').style.display = 'none'
-        setIsFiltering(true)
-        let urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&page_size=40&metacritic=85,100`
-        if (genre != 'all') {
-            urlFiltered += `&genres=${genre}`
+    const handleFilter = useCallback(async (genre, platform, order, firstPage) => {
+        setIsLoading(true)
+        firstPage && setCurrentPage(1)
+        let urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&page_size=20&metacritic=85,100&page=${currentPage}`
+        if (genre !== 'all' && genre != undefined) {
+            document.querySelector('.game-list').style.display = 'none'
+            urlFiltered += `&genres=${genre}&page=1`
         }
 
-        if (platform != 'all') {
-            urlFiltered += `&parent_platforms=${platform}`
+        if (platform !== 'all' && platform != undefined) {
+            document.querySelector('.game-list').style.display = 'none'
+            urlFiltered += `&platforms=${platform}`
         }
 
-        if (order != 'all') {
-            urlFiltered += `&ordering=${order}`
+        if (order !== 'all' && platform != undefined) {
+            document.querySelector('.game-list').style.display = 'none'
+            urlFiltered +=  `&ordering=${order}`
         }else {
             urlFiltered += `&ordering=-released`
         }
 
-        const response = await fetch(urlFiltered);
-        const filteredData = await response.json();
-        document.querySelector('.game-list').style.display = 'grid'
-        setFilteredGames(filteredData);
-        setIsFiltering(false);
-    };
+        console.log(urlFiltered)
+        try {
+            const response = await fetch(urlFiltered)
+            const data = await response.json()
+            let allGames = []
+            if(genre != undefined && platform != undefined && order != undefined) {
+                allGames = data.results
+            }else {
+                allGames = filteredGames.concat(data.results)
+            }
+            console.log(data.next)
+            if(data.next != null) {
+                setNextPage(true)
+            }
+            setFilteredGames(allGames)
+        } catch (error) {
+            setError(error.message)
+        } finally {
+            document.querySelector('.game-list').style.display = 'grid'
+            setIsLoading(false)
+        }
+    }, [currentPage])
 
-  return (
-    <section className='content'>
-        <h2 className='page-title'>New and Trending</h2>
-        <p>Based on player counts and release date</p>
+    useEffect(() => {
+        handleFilter()
+    }, [currentPage])
 
-        <Filters onFilterChange={handleFilter}/>
+    const handleLoadMore = () => {
+        if(nextPage === true) {
+            setCurrentPage(prevPage => prevPage + 1)
+        }
+    }
 
-        {error && <p>Error: {error}</p>}
-        {loading || isFiltering ? <div className='lds-dual-ring'></div> : ''}
-        <article className='game-list'>
-        {filteredGames?.results.map((game) => (
-            <GameCard data={game} key={game.id}/>
-        ))}
+    window.onscroll = function(ev) {
+        if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
+            handleLoadMore()
+        }
+    }
+
+
+    return (
+        <section className='content'>
+            <h2 className='page-title'>New and Trending</h2>
+            <p>Based on player counts and release date</p>
+
+            <Filters onFilterChange={handleFilter} />
+
             
-        </article>
-    </section>
-  )
+            <article className='game-list'>
+                {filteredGames.length > 0 && filteredGames.map(game => (
+                    <GameCard key={game.id} data={game} />
+                ))}
+            </article>
+            {error && <p>Error: {error}</p>}
+            {(isLoading) && <div className='lds-dual-ring'></div>}
+        </section>
+    )
 }

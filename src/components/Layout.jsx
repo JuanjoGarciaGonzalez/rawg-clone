@@ -3,6 +3,7 @@ import { Header } from './layout/Header'
 import { Routers } from '../routes/Routers'
 import { Sidebar } from './layout/Sidebar'
 import { Footer } from './layout/Footer'
+import { SidebarHamburguer } from './layout/SidebarHamburguer'
 
 export const Layout = () => {
   return (
@@ -13,6 +14,7 @@ export const Layout = () => {
             <Routers />
         </div>
         <Footer />
+        <SidebarHamburguer />
     </>
   )
 }
