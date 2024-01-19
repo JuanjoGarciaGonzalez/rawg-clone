@@ -34,6 +34,7 @@ h1, h2, h3, h4, h5, h6 {
 .w-100 {
   text-align: left;
   width: 100%;
+  margin-top: 2rem;
 
 }
 /* HEADER */
@@ -113,6 +114,35 @@ h1, h2, h3, h4, h5, h6 {
 
 .sidebar-menu {
   list-style-type: none;
+  max-height: 320px;
+  overflow: hidden;
+  transition: all .3s ease;
+}
+
+.sidebar-menu-wrapper {
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.sidebar-menu.open {
+  max-height: none;
+}
+
+.show-more {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.show-more .game-card-platform{
+  background-image: none;
+}
+
+
+.show-more svg {
+  transform: translateY(1px) rotate(90deg);
+  width: 8px;
+  padding: 7px;
 }
 
 .sidebar-menu a {
@@ -125,13 +155,22 @@ h1, h2, h3, h4, h5, h6 {
   transition: color .3s ease;
 }
 
+.sidebar-menu li {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
 .sidebar-menu a:hover {
   color: hsla(0,0%,100%,.6);
 }
 
 /* PAGE CONTENT */
 .content {
-  width: 85%;
+  width: 100%;
   display: inline-block;
 }
 
@@ -217,6 +256,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 17px;
   height: 13px;
   margin-right: 5px;
+  background-image: url('./../public/joystick-svgrepo-com.svg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: initial;
@@ -483,7 +523,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(2, minmax(150px, 200px));
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 95px);
   grid-gap: 1rem;
 }
 
@@ -494,10 +534,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .game-page-gallery {
   overflow: hidden;
+  border-radius: 7px;
 }
 
 .game-page-media-img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: all .3s ease;
   border-radius: 7px;
@@ -651,6 +693,20 @@ h1, h2, h3, h4, h5, h6 {
   height: 1rem;
 }
 
+@media(max-width: 1540px) {
+  main {
+    padding: 0 3rem;
+  }
+
+  .content.flex {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
+
 @media(max-width: 1224px) {
   main {
     padding: 0 2rem;
@@ -713,4 +769,8 @@ h1, h2, h3, h4, h5, h6 {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.buttonMore {
+  z-index: 10;
 }

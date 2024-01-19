@@ -3,7 +3,6 @@ import { useFetch } from '../../useFetch'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { GamePageGallery } from '../games/GamePageGallery'
-import { GamePageTrailer } from '../games/GamePageTrailer'
 
 export const GamePage = () => {
     const { term } = useParams();
@@ -13,7 +12,7 @@ export const GamePage = () => {
         const main = document.querySelector('main')
 
         if(main != null && data != null) {
-            main.style.backgroundImage = 'linear-gradient(180deg, rgba(21, 21, 21, 1) 0%, rgba(21,21,21,0.8241911764705882) 0%, rgba(21,21,28,1) 100%),url('+data.background_image+')' 
+            main.style.backgroundImage = 'linear-gradient(180deg, rgba(21, 21, 21, 1) 0%, rgba(21,21,21,0.8541911764705882) 0%, rgba(21,21,28,1) 100%),url('+data.background_image+')' 
             main.style.backgroundSize = 'cover'
             main.style.backgroundPosition = 'center'
             main.style.backgroundRepeat = 'no-repeat'
@@ -122,7 +121,6 @@ export const GamePage = () => {
                 </div>
 
                 <div className='game-page-media'>
-                    {/* <GamePageTrailer game={data?.id}/> */}
                     <div className='game-page-media-gallery'>
                         <GamePageGallery game={data?.id}/>
                     </div>

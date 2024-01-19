@@ -7,7 +7,7 @@ export const FilterOrder = ({ onFilterChange }) => {
       const order = event.target.value;
       const platformValue = document.querySelector('.order-platform').value;
       const genreValue = document.querySelector('.order-genre').value;
-      onFilterChange(genreValue, platformValue, order);
+      onFilterChange(genreValue, platformValue, order, true);
     }
 
   return (

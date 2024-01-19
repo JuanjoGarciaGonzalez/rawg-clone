@@ -2,13 +2,13 @@ import React from 'react'
 import { useFetch } from '../../useFetch'
 
 export const FilterPlatform = ({ onFilterChange }) => {
-    const {data} = useFetch(`https://rawg.io/api/platforms/lists/parents?token&key=${import.meta.env.VITE_API_KEY}&ordering=name`)
+    const {data} = useFetch(`https://rawg.io/api/platforms?token&key=${import.meta.env.VITE_API_KEY}&ordering=name`)
 
     async function filterPerPlatform(event) {
       const platform = event.target.value;
       const genreValue = document.querySelector('.order-genre').value;
       const orderValue = document.querySelector('.order').value;
-      onFilterChange(genreValue, platform, orderValue);
+      onFilterChange(genreValue, platform, orderValue, true);
     }
 
   return (
