@@ -20,7 +20,7 @@ export const SidebarHamburguer = () => {
                             <a href='/'>Home</a>
                         </li>
                         <li>
-                            <a href='/all'>All Games</a>
+                            <a href='/games'>All Games</a>
                         </li>
                     </ul>
 

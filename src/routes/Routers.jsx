@@ -10,7 +10,7 @@ export const Routers = () => {
   return (
     <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/all' element={<AllGames/>}/>
+        <Route path='/games' element={<AllGames/>}/>
         <Route path='/search/:term' element={<Search/>}/>
         <Route path='/games/:term' element={<GamePage/>}/>
         <Route path='/platforms/:term' element={<GamesPlatformPage/>}/>

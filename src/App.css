@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 .search-bar-lens {
   position: absolute;
   left: 15px;
-  top: 3px;
+  top: 0px;
   bottom: 0;
   margin: auto;
   width: 1rem;
@@ -79,16 +79,39 @@ h1, h2, h3, h4, h5, h6 {
 .search-bar input {
   all: unset;
   color: hsla(0,0%,100%,.6);
-  padding: .7rem 0;
+  padding: .9rem 0;
   width: 100%;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .search-bar input::placeholder {
   color: hsla(0,0%,100%,.6);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.search-bar-shortcut {
+  position: absolute;
+  right: 15px;
+  color: hsla(0,0%,100%,.3);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3px;
+  top: 0;
+  bottom: 0;
+  font-size: 12px;
+}
+
+.search-bar-shortcut span {
+  border: 1px solid hsla(0,0%,100%,.3);
+  color: hsla(0,0%,100%,.3);
+  padding: 2px 5px;
+  border-radius: 2px;
 }
 
 .api-link {
-  flex-grow: 1;
+  flex-grow: 0.3;
   text-align: right;
   font-weight: 500;
   padding-bottom: 5px;
@@ -655,6 +678,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .game-page-table {
   margin-top: 2rem;
+  width: 100%;
 }
 
 .game-page-table th{
@@ -697,6 +721,10 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+.offcanvas-close {
+  display: none;
+}
+
 @media(max-width: 1540px) {
   main {
     padding: 0 3rem;
@@ -704,6 +732,14 @@ h1, h2, h3, h4, h5, h6 {
 
   .content.flex {
     flex-direction: column;
+  }
+
+  .game-page-media {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 50px;
+    width: 100%;
   }
 
   .sidebar {
@@ -724,15 +760,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .offcanvas {
-    display: block;
     height: 100vh;
     width: 30vw;
     position: fixed;
     left: 110%;
     top: 0;
-    backdrop-filter: blur(65px);
+    background-color: rgba(59,59,59,255);
     transition: all .3s ease;
     padding: 4rem 2rem;
+    display: block;
   }
 
   .offcanvas .sidebar {
@@ -742,12 +778,11 @@ h1, h2, h3, h4, h5, h6 {
 
   .offcanvas.opened {
     left: 70%;
-    
   }
 
   .offcanvas-close {
     all: unset;
-    position: fixed;
+    position: absolute;
     top: 2rem;
     right: 2rem;
     z-index: 2;
@@ -780,6 +815,15 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 
   }
+
+  .game-card-content-hidden {
+    opacity: 1;
+    position: static;
+  }
+
+  .search-bar-shortcut {
+    display: none;
+  }
 }
 
 @media(max-width: 768px) {
@@ -811,6 +855,13 @@ h1, h2, h3, h4, h5, h6 {
 
   .buttonHam {
     margin-left: 0;
+  }
+
+  .game-page-media {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
   }
 }
 

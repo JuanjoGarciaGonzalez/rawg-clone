@@ -35,8 +35,8 @@ export const GamePage = () => {
                     <div className='game-header'>
                         <span className='game-page-date'>{data?.released}</span>
                         <div className='game-page-platforms'>
-                            {data?.parent_platforms != null ? data?.parent_platforms.map((platform) => (
-                            <span className={`game-card-platform ${platform.platform.slug == 'pc' ? 'pc' : ''} ${platform.platform.slug == 'playstation' ? 'play' : ''} ${platform.platform.slug == 'xbox' ? 'xbox' : ''} ${platform.platform.slug == 'mac' ? 'mac' : ''} ${platform.platform.slug == 'nintendo' ? 'nintendo' : ''} ${platform.platform.slug == 'android' ? 'android' : ''} ${platform.platform.slug == 'ios' ? 'ios' : ''} ${platform.platform.slug == 'linux' ? 'linux' : ''}`} key={platform.platform.id}></span>
+                            {data?.platforms != null ? data?.platforms.map((platform) => (
+                            <span className={`game-card-platform ${platform.platform.slug == 'pc' ? 'pc' : ''} ${platform.platform.slug == 'playstation' ? 'play' : ''} ${platform.platform.slug == 'xbox' ? 'xbox' : ''} ${platform.platform.slug == 'mac' ? 'mac' : ''} ${platform.platform.slug == 'nintendo-switch' ? 'nintendo' : ''} ${platform.platform.slug == 'android' ? 'android' : ''} ${platform.platform.slug == 'ios' ? 'ios' : ''} ${platform.platform.slug == 'linux' ? 'linux' : ''}`} key={platform.platform.id} title={platform.platform.name}></span>
                             )) : ''}
                         </div>
                     </div>
@@ -108,14 +108,18 @@ export const GamePage = () => {
                             </tr>
 
                             <tr className='empty-row'></tr>
+                            {data?.website != null ?
                             <tr>
                                 <th>Website</th>
                             </tr>
+                            : ''}
+                            {data?.website != null ?
                             <tr>
                                 <td className='tags'>
                                     <a href={data?.website} target='_blank' >{data?.website}</a>
                                 </td>
                             </tr>
+                            : ''}
                         </tbody>
                     </table>
                 </div>
@@ -125,16 +129,16 @@ export const GamePage = () => {
                         <GamePageGallery game={data?.id}/>
                     </div>
                     
-
+                    {data?.stores.length > 0 ?
                     <div className='game-page-stores'>
                         <h4>Where to buy?</h4>
                         <div className='game-page-stores-wrapper'>
                             {data?.stores != null ? data?.stores.map((store) => (
                                 <a key={store.store.id} target='_blank' href={`https://${store.store.domain}`} className='game-page-store'>{store.store.name}</a>
                             )) : ''} 
-                        </div>
-                    
+                        </div>                    
                     </div>
+                    : ''}
                 </div>
             </div>
             }
