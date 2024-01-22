@@ -144,7 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .sidebar-menu-wrapper {
   position: relative;
-  padding-bottom: 1rem;
+  padding-bottom: 10px;
 }
 
 .sidebar-menu.open {
@@ -759,16 +759,78 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 
+  .sidebar-offcanvas-login {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-offcanvas-login .api-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    background-color: #151515;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    transition: all .3s ease;
+  }
+
+  .sidebar-offcanvas-login .api-link:hover {
+    background-color: #1515159d;
+  }
+
+  .sidebar-offcanvas-login .api-link.login {
+    background-image: url('./../public/login.svg');
+  }
+
+  .sidebar-offcanvas-login .api-link.signup {
+    background-image: url('./../public/signup.svg');
+  }
+
+  .sidebar-offcanvas-login li {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-offcanvas-login li span {
+    font-size: 12px;
+    opacity: .4;
+    color: white;
+    text-align: left;
+  }
+
   .offcanvas {
     height: 100vh;
-    width: 30vw;
+    width: 100vw;
     position: fixed;
-    left: 110%;
+    left: 0%;
     top: 0;
-    background-color: rgba(59,59,59,255);
     transition: all .3s ease;
-    padding: 4rem 2rem;
     display: block;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    display: none;
+  }
+
+  .offcanvas-container {
+    width: 30%;
+    height: 100%;
+    background-color: rgba(59,59,59,255);
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    position: absolute;
+    top: 0;
+    left: 110%;
+    padding: 4rem 2rem;
   }
 
   .offcanvas .sidebar {
@@ -776,8 +838,12 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
   }
 
-  .offcanvas.opened {
+  .offcanvas.opened  .offcanvas-container{
     left: 70%;
+  }
+
+  .offcanvas.opened {
+    display: block;
   }
 
   .offcanvas-close {
@@ -862,6 +928,11 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: flex-start;
     gap: 2rem;
+  }
+
+  .offcanvas {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 

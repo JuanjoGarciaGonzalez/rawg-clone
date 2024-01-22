@@ -5,6 +5,8 @@ import { AllGames } from '../components/pages/AllGames'
 import { Search } from '../components/pages/Search'
 import { GamePage } from '../components/games/GamePage'
 import { GamesPlatformPage } from '../components/platforms/GamesPlatformPage'
+import { LoginPage } from '../components/pages/LoginPage'
+import { SignupPage } from '../components/pages/SignupPage'
 
 export const Routers = () => {
   return (
@@ -14,6 +16,8 @@ export const Routers = () => {
         <Route path='/search/:term' element={<Search/>}/>
         <Route path='/games/:term' element={<GamePage/>}/>
         <Route path='/platforms/:term' element={<GamesPlatformPage/>}/>
+        <Route path='/login' element={<LoginPage/>}/>
+        <Route path='/signup' element={<SignupPage/>}/>
     </Routes>
   )
 }
