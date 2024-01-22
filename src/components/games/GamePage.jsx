@@ -3,6 +3,7 @@ import { useFetch } from '../../useFetch'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { GamePageGallery } from '../games/GamePageGallery'
+import { BreadcrumbsGames } from '../layout/BreadcrumbsGames'
 
 export const GamePage = () => {
     const { term } = useParams();
@@ -32,6 +33,7 @@ export const GamePage = () => {
             {loading == true ? <div className='lds-dual-ring'></div> :
             <div className='content flex padding'>
                 <div className='game-page-content'>
+                    <BreadcrumbsGames />
                     <div className='game-header'>
                         <span className='game-page-date'>{data?.released}</span>
                         <div className='game-page-platforms'>

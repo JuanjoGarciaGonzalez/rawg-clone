@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .search-bar-shortcut {
   position: absolute;
-  right: 15px;
+  right: 20px;
   color: hsla(0,0%,100%,.3);
   display: flex;
   justify-content: flex-end;
@@ -725,6 +725,30 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+/* BREADCRUMBS */
+.breadcrumbs {
+  margin-bottom: 2rem;
+}
+
+.breadcrumbs ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3px;
+  list-style: none;
+}
+
+.breadcrumbs li, .breadcrumbs li a{
+  letter-spacing: 1.7px;
+  color: hsla(0,0%,100%,.4);
+  text-transform: uppercase;
+  transition: all .3s;
+  font-size: 10px;
+}
+
+.breadcrumbs a:hover {
+  color: white;
+}
 @media(max-width: 1540px) {
   main {
     padding: 0 3rem;
@@ -818,7 +842,8 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     z-index: 10;
     backdrop-filter: blur(10px);
-    display: none;
+    opacity: 0;
+    z-index: -1;
   }
 
   .offcanvas-container {
@@ -843,14 +868,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .offcanvas.opened {
-    display: block;
+    opacity: 1;
+    z-index: 10;
   }
 
   .offcanvas-close {
     all: unset;
     position: absolute;
     top: 2rem;
-    right: 2rem;
+    right: 1.9rem;
     z-index: 2;
     cursor: pointer;
     width: 30px;
@@ -885,6 +911,7 @@ h1, h2, h3, h4, h5, h6 {
   .game-card-content-hidden {
     opacity: 1;
     position: static;
+    padding: 0;
   }
 
   .search-bar-shortcut {
@@ -899,10 +926,16 @@ h1, h2, h3, h4, h5, h6 {
 
   .header {
     gap: 1rem;
+    padding: 1.5rem 0;
+  }
+  
+  .w-100 {
+    margin-top: 1rem;
   }
 
   .content-wrapper {
     flex-direction: column;
+    margin-top: 1rem;
   }
 
   .content, .sidebar {
@@ -915,8 +948,15 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
   }
 
+  .offcanvas.opened .offcanvas-container{
+    width: 100%;
+    left: 0;
+    border-radius: 0;
+  }
+
   .offcanvas-close {
     right: .5rem;
+    top: 1.5rem;
   }
 
   .buttonHam {
