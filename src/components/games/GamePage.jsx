@@ -38,7 +38,7 @@ export const GamePage = () => {
                         <span className='game-page-date'>{data?.released}</span>
                         <div className='game-page-platforms'>
                             {data?.platforms != null ? data?.platforms.map((platform) => (
-                            <span className={`game-card-platform ${platform.platform.slug == 'pc' ? 'pc' : ''} ${platform.platform.slug == 'playstation' ? 'play' : ''} ${platform.platform.slug == 'xbox' ? 'xbox' : ''} ${platform.platform.slug == 'mac' ? 'mac' : ''} ${platform.platform.slug == 'nintendo-switch' ? 'nintendo' : ''} ${platform.platform.slug == 'android' ? 'android' : ''} ${platform.platform.slug == 'ios' ? 'ios' : ''} ${platform.platform.slug == 'linux' ? 'linux' : ''}`} key={platform.platform.id} title={platform.platform.name}></span>
+                            <span className={`game-card-platform ${platform.platform.slug == 'pc' ? 'pc' : ''} ${platform.platform.name.includes('Play') ? 'play' : ''} ${platform.platform.name.includes('Xbox') ? 'xbox' : ''} ${platform.platform.slug == 'mac' ? 'mac' : ''} ${platform.platform.name.includes('Nintendo') ? 'nintendo' : ''} ${platform.platform.slug == 'android' ? 'android' : ''} ${platform.platform.slug == 'ios' ? 'ios' : ''} ${platform.platform.slug == 'linux' ? 'linux' : ''}`} key={platform.platform.id} title={platform.platform.name}></span>
                             )) : ''}
                         </div>
                     </div>

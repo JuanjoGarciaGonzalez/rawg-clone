@@ -762,7 +762,6 @@ h1, h2, h3, h4, h5, h6 {
   .game-page-media {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
     gap: 50px;
     width: 100%;
   }

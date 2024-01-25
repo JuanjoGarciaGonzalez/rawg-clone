@@ -12,10 +12,22 @@ export const Home = () => {
     const [error, setError] = useState(null)
     const [nextPage, setNextPage] = useState(false)
 
+
     const handleFilter = useCallback(async (genre, platform, order, firstPage) => {
         setIsLoading(true)
-        firstPage && setCurrentPage(1)
-        let urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&page_size=20&metacritic=85,100&page=${currentPage}`
+        if(firstPage) {
+            setCurrentPage(1)
+        }
+        if(genre === undefined) {
+            genre = document.querySelector('#order-genre').value
+        }
+        if(platform === undefined) {
+            platform = document.querySelector('#order-platform').value
+        }
+        if(order === undefined) {
+            order = document.querySelector('#order').value
+        }
+        let urlFiltered = `${import.meta.env.VITE_API_BASE_URL}&page_size=20&metacritic=85,100&page=${firstPage ? '1' : currentPage}`
         if (genre !== 'all' && genre != undefined) {
             document.querySelector('.game-list').style.display = 'none'
             urlFiltered += `&genres=${genre}&page=1`
@@ -33,21 +45,24 @@ export const Home = () => {
             urlFiltered += `&ordering=-released`
         }
 
-        console.log(urlFiltered)
         try {
             const response = await fetch(urlFiltered)
             const data = await response.json()
             let allGames = []
-            if(genre != undefined && platform != undefined && order != undefined) {
+            if(firstPage) {
                 allGames = data.results
             }else {
                 allGames = filteredGames.concat(data.results)
             }
-            console.log(data.next)
+
+            setFilteredGames(allGames)
+
             if(data.next != null) {
                 setNextPage(true)
+            }else {
+                setNextPage(false)
             }
-            setFilteredGames(allGames)
+            
         } catch (error) {
             setError(error.message)
         } finally {
@@ -62,7 +77,7 @@ export const Home = () => {
 
     const handleLoadMore = () => {
         if(nextPage === true) {
-            setCurrentPage(prevPage => prevPage + 1)
+            setCurrentPage(currentPage + 1)
         }
     }
 
