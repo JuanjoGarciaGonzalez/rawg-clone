@@ -6,7 +6,7 @@ import { GamePageGallery } from '../games/GamePageGallery'
 import { BreadcrumbsGames } from '../layout/BreadcrumbsGames'
 
 export const GamePage = () => {
-    const { term } = useParams();
+    const { term } = useParams()
     const {data, loading, error} = useFetch(`https://rawg.io/api/games/${term}?key=${import.meta.env.VITE_API_KEY}`)
 
     useEffect(() => {
@@ -46,9 +46,9 @@ export const GamePage = () => {
                     <a href="#" className='add-game'>Add to<br/><span>My games</span> {data?.added}</a>
 
                     <div className='game-ratings'>
-                        {data?.ratings.map((rating) => {
-                            <span className={`ratings ${rating.title}`}>{rating.count} {rating.title}</span>  
-                        })}
+                        {data?.ratings.map((rating) => (
+                            <span key={rating.id} className={`ratings ${rating.title}`}><span className='point'></span>{rating.title} <span>{rating.count} </span></span>  
+                        ))}
                     </div>
 
                     <p className='game-page-about'>About</p>
@@ -96,6 +96,20 @@ export const GamePage = () => {
                             </tr>
                             <tr className='empty-row'></tr>
                             <tr>
+                                <th>Website</th>
+                                <th>Metacritic</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href={data?.website} target='_blank' >{data?.website}</a>
+                                </td>
+
+                                <td>
+                                    {data?.metacritic != null ? <div className='metacritic-wrapper'><span className={`metacritic single-page ${data?.metacritic >= 50 ? 'green' : 'red'}`}>{data?.metacritic}</span></div> : ''}
+                                </td>
+                            </tr>
+                            <tr className='empty-row'></tr>
+                            <tr>
                                 <th>Tags</th>
                             </tr>
                             <tr>
@@ -109,19 +123,6 @@ export const GamePage = () => {
                                 </td>
                             </tr>
 
-                            <tr className='empty-row'></tr>
-                            {data?.website != null ?
-                            <tr>
-                                <th>Website</th>
-                            </tr>
-                            : ''}
-                            {data?.website != null ?
-                            <tr>
-                                <td className='tags'>
-                                    <a href={data?.website} target='_blank' >{data?.website}</a>
-                                </td>
-                            </tr>
-                            : ''}
                         </tbody>
                     </table>
                 </div>
