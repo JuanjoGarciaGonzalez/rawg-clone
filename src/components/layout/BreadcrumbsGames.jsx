@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const BreadcrumbsGames = () => {
+export const BreadcrumbsGames = (props) => {
   return (
     <div className='breadcrumbs'>
         <ul>
@@ -8,7 +8,7 @@ export const BreadcrumbsGames = () => {
             <li>/</li>
             <li><a href="/games">Games</a></li>
             <li>/</li>
-            <li className='actual'>Game</li>
+            <li className='actual'>{props.game}</li>
         </ul>
     </div>
   )

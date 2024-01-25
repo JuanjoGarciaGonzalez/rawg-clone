@@ -47,7 +47,7 @@ export const Header = () => {
         </div>
         <a href='/login' className='api-link'>LOGIN</a>
         <a href='/signup' className='api-link'>SIGNUP</a>
-        <a href='https://api.rawg.io/docs/' target='_blank' className='api-link'>API DOCS</a>
+        <a href='https://api.rawg.io/docs/' target='_blank' className='api-link'>API</a>
         <button className='buttonHam' onClick={openOffcanvas}>
             <svg className="SVGInline-svg header-menu__icon-svg" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.8h16M1 9h16M1 16.2h16" strokeWidth="2" stroke="#FFF" fill="none" strokeLinecap="round"></path></svg>
         </button>

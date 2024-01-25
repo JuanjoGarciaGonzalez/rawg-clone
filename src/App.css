@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 10px;
 }
 
-.sidebar-menu.open {
+.platforms.open {
   max-height: none;
 }
 
@@ -736,6 +736,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: flex-start;
   gap: 3px;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .breadcrumbs li, .breadcrumbs li a{
@@ -855,7 +856,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 0;
     left: 110%;
-    padding: 2rem;
+    padding: 2rem 2rem 50px 2rem;
+    overflow-y: scroll;
   }
 
   .offcanvas .sidebar {
@@ -941,6 +943,11 @@ h1, h2, h3, h4, h5, h6 {
   .content, .sidebar {
     width: 100%;
     padding-top: 0;
+  }
+
+  .page-title {
+    font-size: 50px;
+    line-height: 60px;
   }
 
   .offcanvas.opened {

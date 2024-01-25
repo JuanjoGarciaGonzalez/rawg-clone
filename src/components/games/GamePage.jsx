@@ -8,7 +8,7 @@ import { BreadcrumbsGames } from '../layout/BreadcrumbsGames'
 export const GamePage = () => {
     const { term } = useParams();
     const {data, loading, error} = useFetch(`https://rawg.io/api/games/${term}?key=${import.meta.env.VITE_API_KEY}`)
-    console.log(data)
+
     useEffect(() => {
         const main = document.querySelector('main')
 
@@ -33,7 +33,7 @@ export const GamePage = () => {
             {loading == true ? <div className='lds-dual-ring'></div> :
             <div className='content flex padding'>
                 <div className='game-page-content'>
-                    <BreadcrumbsGames />
+                    <BreadcrumbsGames game={data?.name}/>
                     <div className='game-header'>
                         <span className='game-page-date'>{data?.released}</span>
                         <div className='game-page-platforms'>

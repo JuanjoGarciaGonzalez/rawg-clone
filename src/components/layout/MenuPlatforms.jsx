@@ -4,7 +4,9 @@ import { useFetch } from '../../useFetch'
 export const MenuPlatforms = () => {
   function openSidebar() {
     console.log('open')
-    document.querySelector('.sidebar-menu.platforms').classList.toggle('open')
+    const menuPlatforms = document.getElementsByClassName('platforms')
+    menuPlatforms[0].classList.toggle('open')
+    menuPlatforms[1].classList.toggle('open')
   }
     const {data, loading, error} = useFetch(`https://rawg.io/api/platforms/lists/parents?token&key=${import.meta.env.VITE_API_KEY}&ordering=releveance`)
   return (
