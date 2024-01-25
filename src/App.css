@@ -855,7 +855,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 0;
     left: 110%;
-    padding: 4rem 2rem;
+    padding: 2rem;
   }
 
   .offcanvas .sidebar {
@@ -921,7 +921,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media(max-width: 768px) {
   main {
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
 
   .header {
