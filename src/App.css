@@ -588,6 +588,7 @@ h1, h2, h3, h4, h5, h6 {
 .game-header {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   padding-bottom: 1rem;
   gap: 1rem;
 }
@@ -695,6 +696,7 @@ h1, h2, h3, h4, h5, h6 {
 .game-page-platforms {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -807,6 +809,59 @@ h1, h2, h3, h4, h5, h6 {
 .breadcrumbs a:hover {
   color: white;
 }
+
+/* LOGIN */
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  margin-top: 2rem;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.login input {
+  height: 50px;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  background: rgba(0,0,0,.3);
+  color: #fff;
+  font-size: 18px;
+}
+
+.login input[type="submit"] {
+  background: white;
+  color: #000;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.login input[type="submit"]:hover {
+  background: #ccc;
+}
+
+.login a {
+  display: block;
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.login h3 {
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 400;
+}
+
 @media(max-width: 1540px) {
   main {
     padding: 0 3rem;
@@ -865,11 +920,11 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #1515159d;
   }
 
-  .sidebar-offcanvas-login .api-link.login {
+  .api-link.login-icon {
     background-image: url('./../public/login.svg');
   }
 
-  .sidebar-offcanvas-login .api-link.signup {
+  .api-link.signup-icon {
     background-image: url('./../public/signup.svg');
   }
 
@@ -887,6 +942,10 @@ h1, h2, h3, h4, h5, h6 {
     opacity: .4;
     color: white;
     text-align: left;
+  }
+
+  .profile-aside {
+    margin: 1rem 0;
   }
 
   .offcanvas {
@@ -919,6 +978,11 @@ h1, h2, h3, h4, h5, h6 {
   .offcanvas .sidebar {
     display: block;
     width: 100%;
+    padding-top: 3rem;
+  }
+
+  .offcanvas .sidebar nav {
+    padding-top: 1rem;
   }
 
   .offcanvas.opened  .offcanvas-container{
@@ -975,6 +1039,10 @@ h1, h2, h3, h4, h5, h6 {
   .search-bar-shortcut {
     display: none;
   }
+
+  .profile .page-title {
+    font-size: 40px;
+  }
 }
 
 @media(max-width: 768px) {
@@ -1006,6 +1074,14 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 60px;
   }
 
+  .search-results span {
+    font-size: 13px;
+  }
+
+  .search-results {
+    margin-bottom: .5rem;
+  }
+
   .offcanvas.opened {
     width: 100%;
     left: 0;
@@ -1028,7 +1104,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .game-page-media {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     gap: 2rem;
   }
@@ -1036,6 +1112,11 @@ h1, h2, h3, h4, h5, h6 {
   .offcanvas {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  .profile .page-title {
+    font-size: 20px;
+    line-height: 1.5;
   }
 }
 

@@ -7,6 +7,7 @@ import { GamePage } from '../components/games/GamePage'
 import { GamesPlatformPage } from '../components/platforms/GamesPlatformPage'
 import { LoginPage } from '../components/pages/LoginPage'
 import { SignupPage } from '../components/pages/SignupPage'
+import { Profile } from '../components/pages/Profile'
 
 export const Routers = () => {
   return (
@@ -18,6 +19,7 @@ export const Routers = () => {
         <Route path='/platforms/:term' element={<GamesPlatformPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/signup' element={<SignupPage/>}/>
+        <Route path='/profile' element={<Profile/>}/>
     </Routes>
   )
 }

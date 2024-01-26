@@ -1,7 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+import { UserContext } from '../../App'
+import { getAuth, signOut } from "firebase/auth"
+import firebaseApp from '../../firebase/FirebaseApp'
+const auth = getAuth(firebaseApp)
 
 
 export const Header = () => {
+
+    const user = useContext(UserContext)
 
     useEffect(() => {
         const searchBar = document.querySelector('.search-bar')
@@ -22,6 +28,14 @@ export const Header = () => {
             }
         })
     })
+
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            window.location.href = '/'
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
 
     const openOffcanvas = () => {
         const sidebar = document.querySelector('.offcanvas')
@@ -45,8 +59,22 @@ export const Header = () => {
                 <span>Ctrl</span>+<span>S</span>
             </div>
         </div>
-        <a href='/login' className='api-link'>LOGIN</a>
-        <a href='/signup' className='api-link'>SIGNUP</a>
+        
+        {user && (
+            <a href='/profile' className='api-link'>
+               {user.email}
+            </a>
+        )}
+        {user && (
+            <a href='' onClick={handleLogout} className='api-link'>
+                LOGOUT
+            </a>
+        )}
+        {user == null ? 
+        <>
+            <a href='/login' className='api-link'>LOGIN</a>
+            <a href='/signup' className='api-link'>SIGNUP</a>
+        </> : '' }
         <a href='https://api.rawg.io/docs/' target='_blank' className='api-link'>API</a>
         <button className='buttonHam' onClick={openOffcanvas}>
             <svg className="SVGInline-svg header-menu__icon-svg" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.8h16M1 9h16M1 16.2h16" strokeWidth="2" stroke="#FFF" fill="none" strokeLinecap="round"></path></svg>
