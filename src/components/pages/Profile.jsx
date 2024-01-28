@@ -14,6 +14,7 @@ export const Profile = () => {
     useEffect(() => {
         if (user) {
             setLoading(false)
+            console.log(user)
         }
 
     })

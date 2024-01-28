@@ -30,7 +30,10 @@ export const SidebarHamburguer = () => {
                 
                 </button>
                  <aside className='sidebar'>
-                    {user && <a href="/profile" className="profile-aside">{user.email}</a>}
+                    {user && <a href='/profile' className='profile-aside profile-link'>
+                        <img src={user.photoURL ? user.photoURL : '../../../public/profile-placeholder.jpg'} alt={user.email} />
+                        {user.email}
+                    </a>}
                     <nav>
                         <ul className="sidebar-offcanvas-login">
                             {user &&
