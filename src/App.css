@@ -318,6 +318,25 @@ h1, h2, h3, h4, h5, h6 {
   background-image: url('../public/ios.svg');
 }
 
+.add-game-card, add-game-card .game-card-button__icon-svg g {
+  transition: all .3s ease;
+}
+
+
+.add-game-card:hover {
+  background-color: white;
+  color: #000;
+}
+
+.add-game-card .game-card-button__icon-svg {
+  width: 12px;
+}
+
+.add-game-card:hover .game-card-button__icon-svg g {
+  fill: #000;
+}
+
+
 .metacritic {
   position: absolute;
   top: 1rem;

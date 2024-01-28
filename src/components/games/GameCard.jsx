@@ -12,7 +12,10 @@ export const GameCard = (props) => {
                 <span className={`game-card-platform ${platform.platform.slug == 'pc' ? 'pc' : ''} ${platform.platform.slug == 'playstation' ? 'play' : ''} ${platform.platform.slug == 'xbox' ? 'xbox' : ''} ${platform.platform.slug == 'mac' ? 'mac' : ''} ${platform.platform.slug == 'nintendo' ? 'nintendo' : ''} ${platform.platform.slug == 'android' ? 'android' : ''} ${platform.platform.slug == 'ios' ? 'ios' : ''} ${platform.platform.slug == 'linux' ? 'linux' : ''}`} key={platform.platform.id}></span>
             )) : ''}
             <h3><a href={`/games/${props.data.slug}`}>{props.data.name}</a></h3>
-            <span className='rating'><img src='./../../../public/plus.svg' alt='plus'/> {props.data.added}</span>
+            <a href='#' className='rating add-game-card'>
+                <svg className="SVGInline-svg game-card-button__icon-svg game-card-button__icon_12-svg game-card-button__icon_with-offset-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><g fill="#fff" fillRule="evenodd"><rect width="3" height="12" x="4.5" rx=".75"></rect><rect width="3" height="12" x="4.5" rx=".75" transform="rotate(-90 6 6)"></rect></g></svg>
+                {props.data.added}
+            </a>
             {props.data.metacritic != null ? <span className={`metacritic ${props.data.metacritic >= 50 ? 'green' : 'red'}`}>{props.data.metacritic}</span> : '' }
 
             <div className='game-card-content-hidden'>
