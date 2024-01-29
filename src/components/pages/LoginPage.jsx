@@ -55,7 +55,7 @@ export const LoginPage = () => {
                 </form>
                 <span className='validation-message'>Invalid credentials, please try again!</span>
                 <a href="/signup">Don't have an account? Sign up!</a>
-                <a href="/recover-pass">Forgot your password?</a>
+                <a href="/recover-password">Forgot your password?</a>
             </div>
 
             <div>

@@ -8,6 +8,7 @@ import { GamesPlatformPage } from '../components/platforms/GamesPlatformPage'
 import { LoginPage } from '../components/pages/LoginPage'
 import { SignupPage } from '../components/pages/SignupPage'
 import { Profile } from '../components/pages/Profile'
+import { RecoverPass } from '../components/pages/RecoverPass'
 
 export const Routers = () => {
   return (
@@ -20,6 +21,7 @@ export const Routers = () => {
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/signup' element={<SignupPage/>}/>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/recover-password' element={<RecoverPass/>}/>
     </Routes>
   )
 }

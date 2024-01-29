@@ -944,6 +944,26 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
+.recover {
+  display: block;
+}
+
+.recover form {
+  width: 244px;
+}
+
+.recover a {
+  display: inline-block;
+}
+
+.validation-message-check {
+  font-size: 12px;
+  color: green;
+  margin-top: 10px;
+  display: none;
+  font-weight: 500;
+}
+
 @media(max-width: 1540px) {
   main {
     padding: 0 3rem;
