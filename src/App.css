@@ -964,6 +964,19 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
+.profile h2 img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.profile .page-title {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
 @media(max-width: 1540px) {
   main {
     padding: 0 3rem;

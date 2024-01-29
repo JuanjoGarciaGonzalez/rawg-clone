@@ -20,9 +20,9 @@ export const Profile = () => {
     })
 
     return (
-        <section className='content profile'>
+        <section className='content profile padding'>
             {loading && <div className='lds-dual-ring'></div>}
-            {user && <h2 className='page-title'>Hi, {user?.email}</h2>}
+            {user && <h2 className='page-title'>{user?.displayName ? user?.displayName : user?.email}<img src={user.photoURL ? user.photoURL : '../../../public/profile-placeholder.jpg'} className='photo'/> </h2>}
         </section>
     )
 }
