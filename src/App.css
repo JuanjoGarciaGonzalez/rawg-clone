@@ -862,6 +862,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #000;
   cursor: pointer;
   transition: all .3s ease;
+  width: 100%;
 }
 
 .login input[type="submit"]:hover {
@@ -912,7 +913,36 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 2rem;
 }
 
-/* VALIDATION INPUT */
+.login-submit {
+  position: relative;
+}
+
+.login-submit .lds-dual-ring {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 1rem;
+  width: 15px;
+  height: 15px;
+}
+
+.login-submit .lds-dual-ring:after {
+  width: 15px;
+  height: 15px;
+  border: 3px solid #000;
+  border-color: #000 transparent #000 transparent;
+  margin: 0;
+}
+
+/* VALIDATION MESSAGE */
+.validation-message {
+  font-size: 12px;
+  color: red;
+  margin-top: 10px;
+  display: none;
+  font-weight: 500;
+}
 
 @media(max-width: 1540px) {
   main {

@@ -62,7 +62,7 @@ export const Header = () => {
         
         {user && (
             <a href='/profile' className='api-link profile-link'>
-                <img src={user.photoURL ? user.photoURL : '../../../public/profile-placeholder.jpg'} alt={user.email} />
+                <img src={user.photoURL ? user.photoURL : '../../../public/profile-placeholder.jpg'} alt='photo' />
                {user.email}
             </a>
         )}
