@@ -836,6 +836,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 150px;
   margin-top: 2rem;
+  min-height: 70dvh;
 }
 
 .login form {
@@ -903,6 +904,7 @@ h1, h2, h3, h4, h5, h6 {
 .profile-link {
   display: flex;
   align-items: center;
+  justify-content: end;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -910,7 +912,6 @@ h1, h2, h3, h4, h5, h6 {
 .profile-link img {
   width: 30px;
   border-radius: 50%;
-  margin-left: 2rem;
 }
 
 .login-submit {
@@ -1128,6 +1129,10 @@ h1, h2, h3, h4, h5, h6 {
   .offcanvas-close svg{
     width: 100%;
     height: 100%;
+  }
+
+  .profile-aside {
+    justify-content: start;
   }
 }
 

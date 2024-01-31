@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { useEffect } from 'react'
 import firebaseApp from '../../firebase/FirebaseApp'
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 const auth = getAuth(firebaseApp)
@@ -40,6 +41,22 @@ export const SignupPage = () => {
                 const credential = GoogleAuthProvider.credentialFromError(error)
             })
     }
+
+    useEffect(() => {
+        const main = document.querySelector('main')
+        document.querySelector('.sidebar').style.display = 'none'
+
+        if(main != null) {
+            main.style.backgroundImage = 'linear-gradient(180deg, rgba(21, 21, 21, 1) 0%, rgba(21,21,21,0.8541911764705882) 0%, rgba(21,21,28,1) 100%),url(../../public/register.jpg)' 
+            main.style.backgroundSize = 'cover'
+            main.style.backgroundPosition = 'center'
+            main.style.backgroundRepeat = 'no-repeat'
+            main.classList.add('game-page-bg')
+        }
+
+        
+        
+      })
 
 
     return (
