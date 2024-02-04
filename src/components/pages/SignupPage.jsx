@@ -1,9 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import firebaseApp from '../../firebase/FirebaseApp'
+import { firebaseApp, db } from '../../firebase/FirebaseApp'
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { collection, addDoc } from "firebase/firestore";
 const auth = getAuth(firebaseApp)
+
+console.log(db)
 
 export const SignupPage = () => {
 
@@ -14,10 +17,20 @@ export const SignupPage = () => {
         setLogging(true)
         const email = document.querySelector('#email').value
         const pass = document.querySelector('#pass').value
+        const name = document.querySelector('#name').value
+
         createUserWithEmailAndPassword(auth, email, pass)
             .then((userCredential) => {
-                setLogging(false)
-                window.location.href = '/profile'
+                return addDoc(collection(db, "users"), {
+                    email: email,
+                    name: name,
+                    uid: userCredential.user.uid,
+                    games: []
+                })
+            })
+            .then(() => {
+                setLogging(false);
+                window.location.href = '/profile';
             })
             .catch((error) => {
                 document.querySelector('.validation-message').style.display = 'block'
@@ -31,15 +44,24 @@ export const SignupPage = () => {
     const googleSignUp = () => {
         const provider = new GoogleAuthProvider()
         signInWithPopup(auth, provider)
-            .then((result) => {
-                window.location.href = '/profile'
-            }).catch((error) => {
+        .then((result) => {
+            const user = result.user
+            return addDoc(collection(db, "users"), {
+                email: user.email,
+                name: user.displayName,
+                uid: user.uid,
+                games: [] 
+            });
+        })
+        .then(() => {
+            window.location.href = '/profile';
+        })
+        .catch((error) => {
                 document.querySelector('.validation-message').style.display = 'block'
                 const errorCode = error.code
                 const errorMessage = error.message
-                const email = error.email
-                const credential = GoogleAuthProvider.credentialFromError(error)
-            })
+                console.log(errorCode, errorMessage)
+        })
     }
 
     useEffect(() => {
@@ -64,7 +86,8 @@ export const SignupPage = () => {
             <div>
                 <h2 className='page-title'>Signup</h2>
                 <form onSubmit={handleSignup}>
-                <input type="email" name="email" id="email" placeholder='Email' required/>
+                    <input type="email" name="email" id="email" placeholder='Email' required/>
+                    <input type="text" name="name" id="name" placeholder='Username' required/>
                     <input type="password" name="pass" id="pass" placeholder='********' pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$" title="La contraseña debe tener al menos 8 caracteres, incluyendo al menos una mayúscula, una minúscula y un número." required />
                     <div className='login-submit'>
                         <input type="submit" value="Sign Up" />

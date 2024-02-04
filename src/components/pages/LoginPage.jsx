@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import firebaseApp from '../../firebase/FirebaseApp'
+import {firebaseApp} from '../../firebase/FirebaseApp'
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 const auth = getAuth(firebaseApp)
 

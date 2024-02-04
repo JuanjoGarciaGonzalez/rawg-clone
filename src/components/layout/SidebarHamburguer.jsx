@@ -2,7 +2,7 @@ import React from "react"
 import { MenuPlatforms } from "./MenuPlatforms"
 import { useContext } from 'react'
 import { UserContext } from '../../App'
-import firebaseApp from '../../firebase/FirebaseApp'
+import {firebaseApp} from '../../firebase/FirebaseApp'
 import { getAuth, signOut } from "firebase/auth"
 const auth = getAuth(firebaseApp)
 

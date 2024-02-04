@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { UserContext } from '../../App'
 import { getAuth, signOut } from "firebase/auth"
-import firebaseApp from '../../firebase/FirebaseApp'
+import {firebaseApp} from '../../firebase/FirebaseApp'
 const auth = getAuth(firebaseApp)
 
 

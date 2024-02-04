@@ -3,7 +3,7 @@ import { Layout } from './components/Layout'
 import { BrowserRouter } from 'react-router-dom'
 import { useState, createContext } from 'react'
 import { getAuth, onAuthStateChanged } from "firebase/auth"
-import firebaseApp from './firebase/FirebaseApp'
+import { firebaseApp } from './firebase/FirebaseApp'
 
 const auth = getAuth(firebaseApp)
 
