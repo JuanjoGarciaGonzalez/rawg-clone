@@ -978,6 +978,50 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
 }
 
+.sidebar-offcanvas-login {
+  list-style: none;
+  gap: 2rem;
+}
+
+.sidebar-offcanvas-login .api-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #151515;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  transition: all .3s ease;
+}
+
+.sidebar-offcanvas-login .api-link:hover {
+  background-color: #1515159d;
+}
+
+.api-link.login-icon {
+  background-image: url('./../public/login.svg');
+}
+
+
+.sidebar-offcanvas-login li {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 5px;
+}
+
+.sidebar-offcanvas-login li span {
+  font-size: 12px;
+  opacity: .4;
+  color: white;
+  text-align: left;
+}
+
+
 @media(max-width: 1540px) {
   main {
     padding: 0 3rem;
@@ -1007,57 +1051,12 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 2rem;
   }
 
-  .api-link {
-    display: none;
-  }
-
-  .sidebar-offcanvas-login {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .sidebar-offcanvas-login .api-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    background-color: #151515;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 50%;
-    transition: all .3s ease;
-  }
-
-  .sidebar-offcanvas-login .api-link:hover {
-    background-color: #1515159d;
-  }
-
   .api-link.login-icon {
     background-image: url('./../public/login.svg');
   }
 
   .api-link.signup-icon {
     background-image: url('./../public/signup.svg');
-  }
-
-  .sidebar-offcanvas-login li {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 1rem;
-  }
-
-  .sidebar-offcanvas-login li span {
-    font-size: 12px;
-    opacity: .4;
-    color: white;
-    text-align: left;
   }
 
   .profile-aside {
@@ -1133,6 +1132,20 @@ h1, h2, h3, h4, h5, h6 {
 
   .profile-aside {
     justify-content: start;
+  }
+
+  .sidebar-offcanvas-login .api-link {
+    width: 48px;
+    height: 48px;
+  }
+
+  .sidebar-offcanvas-login {
+    display: flex;
+    margin-bottom: 2rem;
+  }
+
+  .api-link {
+    display: none;
   }
 }
 

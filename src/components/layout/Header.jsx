@@ -67,9 +67,9 @@ export const Header = () => {
             </a>
         )}
         {user && (
-            <a href='' onClick={handleLogout} className='api-link'>
-                LOGOUT
-            </a>
+            <ul className="sidebar-offcanvas-login api-link">
+                <li><a href='' onClick={handleLogout} className='api-link login-icon'></a></li>
+            </ul>
         )}
         {user == null ? 
         <>
