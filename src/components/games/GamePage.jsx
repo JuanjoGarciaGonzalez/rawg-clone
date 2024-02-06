@@ -1,13 +1,19 @@
 import React from 'react'
+import { useContext } from 'react'
+import { UserContext } from '../../App'
 import { useFetch } from '../../useFetch'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { GamePageGallery } from '../games/GamePageGallery'
 import { BreadcrumbsGames } from '../layout/BreadcrumbsGames'
+import { firebaseApp, db } from '../../firebase/FirebaseApp'
+import { doc, updateDoc, arrayUnion, arrayRemove, getDoc } from "firebase/firestore";
 
 export const GamePage = () => {
     const { term } = useParams()
     const {data, loading, error} = useFetch(`https://rawg.io/api/games/${term}?key=${import.meta.env.VITE_API_KEY}`)
+    const user = useContext(UserContext)
+    let addButton = null
 
     useEffect(() => {
         const main = document.querySelector('main')
@@ -20,10 +26,71 @@ export const GamePage = () => {
             main.classList.add('game-page-bg')
         }
 
-        
-        
-      })
-     
+        addButton = document.querySelector('.add-game')
+
+        //check if game is already added to user's games
+        if(user != null) {
+            const userRef = doc(db, "users", user.uid)
+            getDoc(userRef).then((doc) => {
+                if (doc != null) {
+                    if(doc.data().games.includes(data?.id)) {
+                        addButton.classList.add('added')
+                        addButton.innerHTML = 'Remove from <br/><span>My games</span>' + data?.added
+                        addButton.removeEventListener('click', addGame)
+                        addButton.addEventListener('click', removeGame)
+                    }
+                } else {
+                    console.log("No such document!")
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error)
+            })
+        }
+    })
+
+    const addGame = (event) => {
+        event.stopPropagation()
+        if(user != null) {
+            const userRef = doc(db, "users", user.uid)
+            updateDoc(userRef, {
+                games: arrayUnion(data.id)
+            })
+            .finally(() => {
+                addButton.classList.add('added')
+                addButton.innerHTML = 'Remove from <br/><span>My games</span>' + data?.added
+                //remove event listener and add removeGame
+                addButton.removeEventListener('click', addGame)
+                addButton.addEventListener('click', removeGame)
+            })
+            .catch((error) => {
+                console.error("Error adding game: ", error)
+            })
+        }else {
+            window.location.href = '/login'
+        }
+    }
+    
+    const removeGame = (event) => {
+        event.stopPropagation()
+        if(user != null) {
+            const userRef = doc(db, "users", user.uid)
+            updateDoc(userRef, {
+                games: arrayRemove(data.id)
+            })
+            .finally(() => {
+                addButton.classList.remove('added')
+                addButton.innerHTML = 'Add to <br/><span>My games</span>' + data?.added
+                //remove event listener and add addGame
+                addButton.removeEventListener('click', removeGame)
+                addButton.addEventListener('click', addGame)
+            })
+            .catch((error) => {
+                console.error("Error removing game: ", error)
+            })
+        }else {
+            window.location.href = '/login'
+        }
+    }
 
     return (
         
@@ -43,7 +110,7 @@ export const GamePage = () => {
                         </div>
                     </div>
                     <h2 className='page-title'>{data?.name}</h2>
-                    <a href="#" className='add-game'>Add to<br/><span>My games</span> {data?.added}</a>
+                    <a href="#" className='add-game' onClick={addGame}>Add to<br/><span>My games</span> {data?.added}</a>
 
                     <div className='game-ratings'>
                         {data?.ratings.map((rating) => (

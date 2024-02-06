@@ -3,10 +3,8 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { firebaseApp, db } from '../../firebase/FirebaseApp'
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 const auth = getAuth(firebaseApp)
-
-console.log(db)
 
 export const SignupPage = () => {
 
@@ -21,7 +19,7 @@ export const SignupPage = () => {
 
         createUserWithEmailAndPassword(auth, email, pass)
             .then((userCredential) => {
-                return addDoc(collection(db, "users"), {
+                return setDoc(doc(db, "users", userCredential.user.uid), {
                     email: email,
                     name: name,
                     uid: userCredential.user.uid,
@@ -46,12 +44,12 @@ export const SignupPage = () => {
         signInWithPopup(auth, provider)
         .then((result) => {
             const user = result.user
-            return addDoc(collection(db, "users"), {
-                email: user.email,
-                name: user.displayName,
-                uid: user.uid,
-                games: [] 
-            });
+            return setDoc(doc(db, "users", user.uid), {
+                    email: user.email,
+                    name: user.displayName,
+                    uid: user.uid,
+                    games: []
+                })
         })
         .then(() => {
             window.location.href = '/profile';
