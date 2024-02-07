@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .api-link {
   flex-grow: 0.3;
-  text-align: right;
+  text-align: center;
   font-weight: 500;
   padding-bottom: 5px;
   transition: color .3s ease;
@@ -1025,6 +1025,23 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
 }
 
+.library {
+  margin-top: 50px;
+}
+
+.library-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid white;
+  font-size: 1.5rem;
+  padding-bottom: .2rem;
+}
+
+.library-title img {
+  width: 30px;
+}
+
 
 @media(max-width: 1540px) {
   main {
@@ -1271,6 +1288,11 @@ h1, h2, h3, h4, h5, h6 {
   .profile .page-title {
     font-size: 20px;
     line-height: 1.5;
+    gap: 1rem;
+  }
+
+  .profile h2 img {
+    width: 50px;
   }
 }
 
