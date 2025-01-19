@@ -8,11 +8,12 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyDsWt4AMWl_mo-Ok5g1YVQMmjCGpfs6IFI",
   authDomain: "rawg-19347.firebaseapp.com",
+  databaseURL: "https://rawg-19347-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "rawg-19347",
-  storageBucket: "rawg-19347.appspot.com",
+  storageBucket: "rawg-19347.firebasestorage.app",
   messagingSenderId: "416217402885",
   appId: "1:416217402885:web:f1fb4f72db424c8c52966c"
-}
+};
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig)

@@ -11,7 +11,7 @@ export const Profile = () => {
 
     const user = useContext(UserContext)
     const [loading, setLoading] = React.useState(true)
-    const [games, setGames] = React.useState([])
+    const [games, setGames] = React.useState(null)
     const [error, setError] = React.useState(null)
 
     
@@ -55,21 +55,28 @@ export const Profile = () => {
     }
 
     return (
-        <section className='content profile padding'>
-            {loading && <div className='lds-dual-ring'></div>}
-            {user && <h2 className='page-title'><img src={user.photoURL ? user.photoURL : '../../../public/profile-placeholder.jpg'} className='photo'/> {user?.displayName ? user?.displayName : user?.email}</h2>}
+        <section className='content profile'>
+            {loading ? <div className='lds-dual-ring mx-auto text-center'></div> :
+                <div>
+                    {user && <h2 className='page-title'><img src={user.photoURL ? user.photoURL : '../../../public/profile-placeholder.jpg'} className='photo'/> {user?.displayName ? user?.displayName : user?.email}</h2>}
 
-            <div className='library'>
-                <p className='library-title'>Library <img src='./../public/added.png'/></p>
-                
-                <article className='game-list'>
-                    {games.length > 0 ? games.map(game => (
-                        <GameCard key={game.id} data={game} />
-                    )) : <p>No games added yet</p>}
-                    {error && <p>Error: {error}</p>}
-                </article>
+                    <div className='library'>
+                        <p className='library-title'>Your game library
+                        <img src='./../public/added.png'/></p>
+                        
+                        <article className='game-list'>
+                            
+                            {games ? 
+                                games.length > 0 ? games.map(game => (
+                                    <GameCard key={game.id} data={game} />
+                                )) : <p>No games added yet</p>
+                            : ''}
+                            {error && <p>Error: {error}</p>}
+                        </article>
 
-            </div>
+                    </div>
+                </div> 
+            }
         </section>
     )
 }

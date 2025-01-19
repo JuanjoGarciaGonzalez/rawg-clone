@@ -429,7 +429,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: hsla(0,0%,100%,.07);
   padding: 10px 1rem;
   margin-right: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   border: none;
   border-radius: 8px;
   position: relative;
@@ -905,6 +905,16 @@ h1, h2, h3, h4, h5, h6 {
   background: #ccc;
 }
 
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &>div {
+    width: 100%;
+  }
+}
+
 .profile-link {
   display: flex;
   align-items: center;
@@ -1033,9 +1043,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  border-bottom: 1px solid white;
-  font-size: 1.5rem;
+  font-size: 24px;
   padding-bottom: .2rem;
+  font-weight: 700;
 }
 
 .library-title img {
